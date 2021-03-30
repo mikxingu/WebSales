@@ -17,7 +17,20 @@ namespace WebSalesMVC.Controllers
 
 		public IActionResult About()
 		{
-			ViewData["Message"] = "Your application description page.";
+			//ViewData é um Dicionario(conjunto palavra/valor)
+			//O atribuito que eu passar para o meu ViewData será chamado na minha View com o nome desse método
+
+			//Mensagem principal da página.
+			ViewData["Message"] = "Página em construção.";
+
+			ViewData["DevMessage"] = "Desenvolvido por: ";
+
+			ViewData["Developer"] = "Michel Alves";
+
+			ViewData["Email"] = "michelalvs@gmail.com";
+
+			
+
 
 			return View();
 		}
