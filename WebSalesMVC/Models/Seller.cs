@@ -16,6 +16,7 @@ namespace WebSalesMVC.Models
 
 
 		public Department Department { get; set; }
+		public int DepartmentId { get; set; }
 
 		public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
 

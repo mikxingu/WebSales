@@ -23,6 +23,10 @@ namespace WebSalesMVC.Services
 
 		public void Insert (Seller obj)
 		{
+			obj.Department = _context.Department.First(); /*
+			                                               * ISSO PREVINE QUE A APLICAÇÃO QUEBRE QUANDO TENTO INSERIR UM VENDEDOR POIS
+			                                               * ATRIBUI O PRIMEIRO DEPARTAMENTO AO MEU VENDEDOR
+			                                               */
 			_context.Add(obj);
 			_context.SaveChanges();
 		}
