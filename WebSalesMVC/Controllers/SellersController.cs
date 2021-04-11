@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -49,13 +50,13 @@ namespace WebSalesMVC.Controllers
 		{
 			if (id == null)
 			{
-				return NotFound();
+				return RedirectToAction(nameof(Error), new { errorMessage = "Id not found!"});
 			}
 
 			var obj = _sellerService.FindById(id.Value);
 			if (obj == null)
 			{
-				return NotFound();
+				return RedirectToAction(nameof(Error), new { errorMessage = "Id not provided!" });
 			}
 
 			return View(obj);
@@ -73,13 +74,13 @@ namespace WebSalesMVC.Controllers
 		{
 			if (id == null)
 			{
-				return NotFound();
+				return RedirectToAction(nameof(Error), new { errorMessage = "Id not provided!" });
 			}
 
 			var obj = _sellerService.FindById(id.Value);
 			if (obj == null)
 			{
-				return NotFound();
+				return RedirectToAction(nameof(Error), new { errorMessage = "Id not found!" });
 			}
 
 			return View(obj);
@@ -89,13 +90,13 @@ namespace WebSalesMVC.Controllers
 		{
 			if (id == null)
 			{
-				return NotFound();
+				return RedirectToAction(nameof(Error), new { errorMessage = "Id not provided!" });
 			}
 
 			var obj = _sellerService.FindById(id.Value);
 			if(obj == null)
 			{
-				return NotFound();
+				return RedirectToAction(nameof(Error), new { errorMessage = "Id not found!" });
 			}
 
 			List<Department> departments = _departmentService.FindAll();
@@ -109,7 +110,7 @@ namespace WebSalesMVC.Controllers
 		{
 			if (id != seller.Id)
 			{
-				return BadRequest();
+				return RedirectToAction(nameof(Error), new { errorMessage = "Seller Id Mismatch." });
 			}
 
 			try
@@ -117,15 +118,16 @@ namespace WebSalesMVC.Controllers
 				_sellerService.Update(seller);
 				return RedirectToAction(nameof(Index));
 			}
-			catch (NotFoundException)
+			catch (ApplicationException e)
 			{
-				return NotFound();
+				return RedirectToAction(nameof(Error), new { errorMessage = e.Message });
 			}
-			catch (DbConcurrencyException)
-			{
-				return BadRequest();
-			}
-			
+		}
+
+		public IActionResult Error(string errorMessage)
+		{
+			var viewModel = new ErrorViewModel { Message = errorMessage, RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier };
+			return View(viewModel);
 		}
 	}
 }
