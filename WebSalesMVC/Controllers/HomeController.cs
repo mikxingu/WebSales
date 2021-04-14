@@ -20,10 +20,11 @@ namespace WebSalesMVC.Controllers
 			//ViewData é um Dicionario(conjunto palavra/valor)
 			//O atribuito que eu passar para o meu ViewData será chamado na minha View com o nome desse método
 
-			//Mensagem principal da página.
-			ViewData["Message"] = "Página em construção.";
 
-			ViewData["DevMessage"] = "Desenvolvido por: ";
+			//Mensagem principal da página.
+			ViewData["Message"] = "Page under construction.";
+
+			ViewData["DevMessage"] = "Developed by: ";
 
 			ViewData["Developer"] = "Michel Alves";
 
