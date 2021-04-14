@@ -9,20 +9,27 @@ namespace WebSalesMVC.Models
 	{
 		public int Id { get; set; }
 
+
+		[Required(ErrorMessage = "{0} is required!")]
+		[StringLength(30,MinimumLength = 3,ErrorMessage = "{0} must be between {2} to {1} characters long.")]
 		public string Name { get; set; }
 
 
+		[Required(ErrorMessage = "Enter a valid email!")]
 		[DataType(DataType.EmailAddress)]
 		public string Email { get; set; }
 
 		[Display(Name = "Base Salary")]
+		[Range(100, 50000, ErrorMessage = "{0} must be between {2} and {1}!")]
 		[DataType(DataType.Currency)]
 		[DisplayFormat(DataFormatString = "{0:F2}")]
+		[Required(ErrorMessage = "{0} is required!")]
 		public double BaseSalary { get; set; }
 
 		[Display(Name = "Birth Date")]
 		[DataType(DataType.Date)]
 		[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+		[Required(ErrorMessage = "{0} is required!")]
 		public DateTime BirthDate { get; set; }
 
 
