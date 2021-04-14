@@ -2,10 +2,12 @@
 
 @{
     ViewData["Title"] = "Create";
+    ViewData["Description"] = "Create a new seller.";
+
 }
 
 <h2>@ViewData["Title"]</h2>
-<h4>Seller</h4>
+<h4>@ViewData["Description"]</h4>
 
 <hr />
 
@@ -47,6 +49,9 @@
             <div asp-validation-summary="All" class="text-danger"></div>
         </form>
     </div>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts{ 
