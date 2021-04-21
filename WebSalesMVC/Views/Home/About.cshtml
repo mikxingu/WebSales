@@ -1,7 +1,23 @@
 ﻿@{
-    ViewData["Title"] = "About";
+    //Esse bloco aceita código C#
+    ViewData["Title"] = "Sobre";
 }
 <h2>@ViewData["Title"]</h2>
 <h3>@ViewData["Message"]</h3>
 
-<p>Use this area to provide additional information.</p>
+<p>
+    This webpage is was using C# and ASP.NET CORE MVC. 
+</p>
+
+
+    <p> 
+        <h4>
+            @ViewData["DevMessage"]
+            <a href="https://github.com/mikxingu">@ViewData["Developer"]</a>
+            -
+            <a href="mailto:michelalvs@gmail.com">
+                @ViewData["Email"]
+            </a>
+         </h4>
+    </p>
+

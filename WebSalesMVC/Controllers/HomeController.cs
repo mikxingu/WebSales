@@ -17,7 +17,21 @@ namespace WebSalesMVC.Controllers
 
 		public IActionResult About()
 		{
-			ViewData["Message"] = "Your application description page.";
+			//ViewData é um Dicionario(conjunto palavra/valor)
+			//O atribuito que eu passar para o meu ViewData será chamado na minha View com o nome desse método
+
+
+			//Mensagem principal da página.
+			ViewData["Message"] = "Page under construction.";
+
+			ViewData["DevMessage"] = "Developed by: ";
+
+			ViewData["Developer"] = "Michel Alves";
+
+			ViewData["Email"] = "michelalvs@gmail.com";
+
+			
+
 
 			return View();
 		}
@@ -37,7 +51,7 @@ namespace WebSalesMVC.Controllers
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()
 		{
-			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+			return View(new WebSalesMVC.Models.ViewModels.ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 		}
 	}
 }
